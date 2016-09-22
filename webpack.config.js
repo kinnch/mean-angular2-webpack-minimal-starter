@@ -4,13 +4,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        'polyfills': './src/polyfills.ts',
-        'vendor': './src/vendor.ts',
-        'main': './src/main.ts'
+        'polyfills': './web/src/polyfills.ts',
+        'vendor': './web/src/vendor.ts',
+        'main': './web/src/main.ts'
     },
     resolve: {
         extensions: ['', '.ts', '.js'],
-        root: './src',
+        root: './web/src',
         modulesDirectories: ['node_modules']
     },
     module: {
@@ -26,16 +26,16 @@ module.exports = {
             name: ['polyfills', 'vendor'].reverse()
         }),
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './web/src/index.html',
             chunksSortMode: 'dependency'
         }),
         new CopyWebpackPlugin([{
-            from: './src/assets',
+            from: './web/src/assets',
             to: 'assets'
         }])
     ],
     output: {
-        path: './dist',
+        path: './web/dist',
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
     }
